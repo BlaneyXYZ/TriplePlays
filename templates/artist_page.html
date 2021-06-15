@@ -1,0 +1,18 @@
+{% extends "header.html" %}
+{% set active_page = "artist_page" %}
+
+<html>
+<body>
+{% block body %}
+<div class="container">
+<table class='table table'>
+     {% for item in data %}
+    <img src={{item[4]}} alt={{item[1]}} width="192" height="192">
+    <p> <b>Artist ID:</b> {{item[0]}} </p>
+    <p><b>Artist Name:</b> {{item[1]}}</p>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
+</body>
+</html>
