@@ -18,7 +18,7 @@ mysql = MySQL(app)
 def songs_table():
     try:
         cursor = mysql.connection.cursor()
-        cursor.execute("SELECT * FROM view_song_count")
+        cursor.execute("SELECT * FROM view_song_count LIMIT 100")
         data = cursor.fetchall()
         print(data)
         return render_template("songs_table.html", data=data)
