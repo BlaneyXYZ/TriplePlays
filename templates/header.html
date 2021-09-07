@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html>
 <style>
-    {  %  block  style  %  }
+    {
+    %
+    block
+    style
+    %
+    }
 
-    {  %  endblock  %  }
+    {
+    %
+    endblock
+    %
+    }
 </style>
 <head>
     {% block head %}
@@ -51,6 +60,9 @@
             </li>
             <li class="{{ 'nav-item active' if active_page == 'artists_table' else 'nav-item' }}"><a class="nav-link"
                                                                                                      href="{{ url_for('artists_table') }}">Artists</a>
+            </li>
+            <li class="{{ 'nav-item active' if active_page == 'statistics' else 'nav-item' }}"><a class="nav-link"
+                                                                                             href="{{ url_for('statistics') }}">Statistics</a>
             </li>
             <li><a class="nav-link" href="{{ url_for('gitlink') }}">GitHub</a></li>
         </ul>

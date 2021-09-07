@@ -11,6 +11,11 @@
     <p> <b>Artist ID:</b> {{item[0]}} </p>
     <p><b>Artist Name:</b> {{item[1]}}</p>
     {% endfor %}
+    {% for item in songs %}
+    <tr>
+        <td><a href="https://open.spotify.com/search/{{item[0]}}%20{{item[1]}}">{{item[1]}}</a></td>
+    </tr>
+    {% endfor %}
 </table>
 </div>
 {% endblock %}

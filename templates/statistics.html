@@ -1,0 +1,16 @@
+{% extends "header.html" %}
+{% set active_page = "statistics" %}
+
+<html>
+<body>
+{% block body %}
+<div class="container">
+<table class='table table'>
+{% for item in data %}
+    <p>TriplePlays current has <b>{{item[0]}}</b> songs from <b>{{item[1]}} </b>Artist(s)</p>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
+</body>
+</html>

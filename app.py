@@ -20,7 +20,6 @@ def songs_table():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM view_song_count LIMIT 100")
         data = cursor.fetchall()
-        print(data)
         return render_template("songs_table.html", data=data)
     except Exception as e:
         return str(e)
@@ -31,7 +30,6 @@ def artists_table():
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM view_artists")
         data = cursor.fetchall()
-        #print(data)
         return render_template("artists_table.html", data=data)
     except Exception as e:
         return str(e)
@@ -42,15 +40,25 @@ def artist_info(artist_id):
         cursor = mysql.connection.cursor()
         cursor.execute("SELECT * FROM table_artists WHERE artist_id = %s", [artist_id])
         data = cursor.fetchall()
-        print(data)
-        return render_template("artist_page.html", data=data)
+        cursor.execute("SELECT * FROM view_song_count where artist_id = %s", [artist_id])
+        songs = cursor.fetchall()
+        return render_template("artist_page.html", data=data, songs=songs)
+    except Exception as e:
+        return str(e)
+
+@app.route('/statistics')
+def statistics():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute("SELECT * from view_statistics;")
+        data = cursor.fetchall()
+        return render_template("statistics.html", data=data)
     except Exception as e:
         return str(e)
 
 @app.route('/git')
 def gitlink():
     return redirect("https://github.com/BlaneyXYZ/TriplePlays")
-
 
 if __name__ == '__main__':
     app.run()
